@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Cloud Storage Simulation</h1>
+
+    <!-- Upload Form -->
+    <form action="/upload" method="post">
+        <input type="text" name="filename" placeholder="Enter filename" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Update Form -->
+    <form action="/update" method="post">
+        <input type="text" name="old_filename" placeholder="Current filename" required>
+        <input type="text" name="new_filename" placeholder="New filename" required>
+        <button type="submit">Update</button>
+    </form>
+
+    <!-- Delete Form -->
+    <form action="/delete" method="post">
+        <input type="text" name="filename" placeholder="Filename to delete" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <!-- File List -->
+    <h2>Stored Files</h2>
+    <ul>
+        {% for file in files %}
+            <li>{{ file }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
